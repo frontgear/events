@@ -184,6 +184,9 @@ module.exports = Class("@frontgear/events/Event", Object, function(Event, base)
 
 	this.constructor = function(name, type, bubbles, cancelable)
 	{
+		if (!(this instanceof Event))
+			return new Event(name, type, bubbles, cancelable);
+
 		if (name == null)
 			throw new Error("Parameter name must be non-null.");
 		if (!Class.isString(name))

@@ -19,6 +19,9 @@ module.exports = Class("@frontgear/events/CascadingEvent", Event, function(Casca
 
 	this.constructor = function(name, nextEvent, type, bubbles, cancelable)
 	{
+		if (!(this instanceof CascadingEvent))
+			return new CascadingEvent(name, nextEvent, type, bubbles, cancelable);
+
 		if (nextEvent == null)
 			throw new Error("Parameter nextEvent must be non-null.");
 		if (!(nextEvent instanceof Event))
